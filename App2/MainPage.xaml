@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="App2.MainPage"
+             BackgroundColor="#f8f9f9">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Entry" >
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="Margin" Value="6,0,0,0"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView>
+        <StackLayout VerticalOptions="Center" Padding="28,0" Spacing="12">
+            <!-- Place new controls here -->
+            <Label Text="Login" FontSize="50" Margin="0,0,0,24" TextColor="#514B44"/>
+            <Grid>
+                <Rectangle x:Name="RectangleEmpresa" Stroke="#c7cdd2" StrokeThickness="0.75" Fill="White">
+                    <Rectangle.Triggers>
+                        <DataTrigger TargetType="Rectangle" Binding="{Binding Source={x:Reference EntryEmpresa}, Path=IsFocused}" Value="True">
+                            <Setter Property="Stroke" Value="#ce6767"></Setter>
+                        </DataTrigger>
+                    </Rectangle.Triggers>
+                </Rectangle>
+                <Entry Placeholder="Empresa" x:Name="EntryEmpresa"/>
+            </Grid>
+            <Grid>
+                <Rectangle x:Name="RectangleUsuario" Stroke="#c7cdd2" StrokeThickness="0.75" Fill="White"/>
+                <Entry Placeholder="Usuario" Focused="Entry_Focused_1" Unfocused="Entry_Unfocused_1" Keyboard="Email"/>    
+            </Grid>
+            <Grid>
+                <Rectangle x:Name="RectangleContraseña" Stroke="#c7cdd2" StrokeThickness="0.75" Fill="White"/>
+                <Entry Placeholder="Contraseña" IsPassword="True" Focused="Entry_Focused_2" Unfocused="Entry_Unfocused_2" Keyboard="Numeric"/>    
+            </Grid>           
+            
+            <Label Text="¿Olvidaste tu contraseña?" HorizontalOptions="End" Padding="0,12"/>
+            <Button Text="Entrar" BackgroundColor="#006ea8" HeightRequest="64" TextColor="White" BorderColor="#46718c" BorderWidth="1.5"/>
+            <Label Text="Declaración de privacidad" TextDecorations="Underline" TextColor="#74469d" Margin="0,12"/>
+        </StackLayout>
+    </ScrollView>
+    
+
+</ContentPage>
