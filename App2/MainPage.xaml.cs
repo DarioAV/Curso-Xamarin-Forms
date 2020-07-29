@@ -18,34 +18,31 @@ namespace App2
             InitializeComponent();
         }
 
-        private void Entry_Focused(object sender, FocusEventArgs e)
+        private void Entry_Focused(object sender, FocusEventArgs e) => ModifyStrokeColor();
+
+        private void Entry_Unfocused(object sender, FocusEventArgs e) => ModifyStrokeColor();
+
+        private void ModifyStrokeColor()
         {
-            RectangleEmpresa.Stroke = Color.FromHex("#ce6767");
+            var focused = Color.FromHex("#ce6767");
+            var unFocused = Color.FromHex("#c7cdd2");
+            RectangleEmpresa.Stroke = EntryEmpresa.IsFocused ? focused : unFocused;
+            RectangleUsuario.Stroke = EntryUsuario.IsFocused ? focused : unFocused;
+            RectangleContraseña.Stroke = EntryPassword.IsFocused ? focused : unFocused;
         }
 
-        private void Entry_Unfocused(object sender, FocusEventArgs e)
-        {
-            RectangleEmpresa.Stroke = Color.FromHex("#c7cdd2");
-        }
+        private void EntryTextChanged(object sender, TextChangedEventArgs e) => Validate();
+        
+        private void Validate() => LoginButton.IsEnabled = ValidateField(EntryEmpresa.Text)
+                && ValidateField(EntryUsuario.Text)
+                && ValidateField(EntryPassword.Text);
+        
 
-        private void Entry_Focused_1(object sender, FocusEventArgs e)
-        {
-            RectangleUsuario.Stroke = Color.FromHex("#ce6767");
-        }
+        private bool ValidateField(string field) => !string.IsNullOrWhiteSpace(field) && field.Trim().Length>=3;
 
-        private void Entry_Unfocused_1(object sender, FocusEventArgs e)
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            RectangleUsuario.Stroke = Color.FromHex("#c7cdd2");
-        }
-
-        private void Entry_Focused_2(object sender, FocusEventArgs e)
-        {
-            RectangleContraseña.Stroke = Color.FromHex("#ce6767");
-        }
-
-        private void Entry_Unfocused_2(object sender, FocusEventArgs e)
-        {
-            RectangleContraseña.Stroke = Color.FromHex("#c7cdd2");
+            Xamarin.Essentials.Browser.OpenAsync("https://www.google.es");
         }
     }
 }

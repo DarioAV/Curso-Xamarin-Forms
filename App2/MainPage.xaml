@@ -19,27 +19,25 @@
             <!-- Place new controls here -->
             <Label Text="Login" FontSize="50" Margin="0,0,0,24" TextColor="#514B44"/>
             <Grid>
-                <Rectangle x:Name="RectangleEmpresa" Stroke="#c7cdd2" StrokeThickness="0.75" Fill="White">
-                    <Rectangle.Triggers>
-                        <DataTrigger TargetType="Rectangle" Binding="{Binding Source={x:Reference EntryEmpresa}, Path=IsFocused}" Value="True">
-                            <Setter Property="Stroke" Value="#ce6767"></Setter>
-                        </DataTrigger>
-                    </Rectangle.Triggers>
-                </Rectangle>
-                <Entry Placeholder="Empresa" x:Name="EntryEmpresa"/>
+                <Rectangle x:Name="RectangleEmpresa" Stroke="#c7cdd2" StrokeThickness="0.75" Fill="White"/>
+                <Entry Placeholder="Empresa" x:Name="EntryEmpresa" TextChanged="EntryTextChanged" Focused="Entry_Focused" Unfocused="Entry_Unfocused"/>
             </Grid>
             <Grid>
                 <Rectangle x:Name="RectangleUsuario" Stroke="#c7cdd2" StrokeThickness="0.75" Fill="White"/>
-                <Entry Placeholder="Usuario" Focused="Entry_Focused_1" Unfocused="Entry_Unfocused_1" Keyboard="Email"/>    
+                <Entry x:Name="EntryUsuario" TextChanged="EntryTextChanged" Placeholder="Usuario" Focused="Entry_Focused" Unfocused="Entry_Unfocused" Keyboard="Email"/>    
             </Grid>
             <Grid>
                 <Rectangle x:Name="RectangleContraseña" Stroke="#c7cdd2" StrokeThickness="0.75" Fill="White"/>
-                <Entry Placeholder="Contraseña" IsPassword="True" Focused="Entry_Focused_2" Unfocused="Entry_Unfocused_2" Keyboard="Numeric"/>    
+                <Entry x:Name="EntryPassword" TextChanged="EntryTextChanged" Placeholder="Contraseña" IsPassword="True" Focused="Entry_Focused" Unfocused="Entry_Unfocused" Keyboard="Numeric"/>    
             </Grid>           
             
             <Label Text="¿Olvidaste tu contraseña?" HorizontalOptions="End" Padding="0,12"/>
-            <Button Text="Entrar" BackgroundColor="#006ea8" HeightRequest="64" TextColor="White" BorderColor="#46718c" BorderWidth="1.5"/>
-            <Label Text="Declaración de privacidad" TextDecorations="Underline" TextColor="#74469d" Margin="0,12"/>
+            <Button x:Name="LoginButton" Text="Entrar" BackgroundColor="#006ea8" HeightRequest="64" TextColor="White" BorderColor="#46718c" BorderWidth="1.5" IsEnabled="False"/>
+            <Label Text="Declaración de privacidad" TextDecorations="Underline" TextColor="#74469d" Margin="0,12">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                </Label.GestureRecognizers>
+            </Label>
         </StackLayout>
     </ScrollView>
     
