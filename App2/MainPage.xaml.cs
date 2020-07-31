@@ -44,5 +44,10 @@ namespace App2
         {
             Xamarin.Essentials.Browser.OpenAsync("https://www.google.es");
         }
+
+        private void LoginButton_Clicked(object sender, EventArgs e)
+        {
+            Application.Current.MainPage.Navigation.PushAsync(new Page());
+        }
     }
 }

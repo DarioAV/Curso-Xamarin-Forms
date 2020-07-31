@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="App2.MainPage"
-             BackgroundColor="#f8f9f9">
+             BackgroundColor="#f8f9f9"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Entry" >
@@ -32,7 +33,7 @@
             </Grid>           
             
             <Label Text="¿Olvidaste tu contraseña?" HorizontalOptions="End" Padding="0,12"/>
-            <Button x:Name="LoginButton" Text="Entrar" BackgroundColor="#006ea8" HeightRequest="64" TextColor="White" BorderColor="#46718c" BorderWidth="1.5" IsEnabled="False"/>
+            <Button x:Name="LoginButton" Clicked="LoginButton_Clicked" Text="Entrar" BackgroundColor="#006ea8" HeightRequest="64" TextColor="White" BorderColor="#46718c" BorderWidth="1.5" IsEnabled="False"/>
             <Label Text="Declaración de privacidad" TextDecorations="Underline" TextColor="#74469d" Margin="0,12">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
